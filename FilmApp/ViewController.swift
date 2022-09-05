@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         collectionView.register(MyCollectionViewCell.nib(), forCellWithReuseIdentifier: MyCollectionViewCell.identifier)
         
         super.viewDidLoad()
-        
+        let service = Service
         let layout=UICollectionViewFlowLayout()
         layout.itemSize=CGSize(width:120, height: 120)
         collectionView.collectionViewLayout  = layout
@@ -40,9 +40,9 @@ extension ViewController: UICollectionViewDataSource{
         return 12
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCell.identifier, for: indexPath) as! MyCollectionViewCell
         
-        //cell.configure(with: UIImage(named: "image"))
+        cell.configure(with: UIImage(named: "image")!)
         return cell
     }
 }
