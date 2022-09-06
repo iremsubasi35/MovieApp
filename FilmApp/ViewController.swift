@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
 
     @IBOutlet var collectionView: UICollectionView!
@@ -16,7 +17,9 @@ class ViewController: UIViewController {
         collectionView.register(MyCollectionViewCell.nib(), forCellWithReuseIdentifier: MyCollectionViewCell.identifier)
         
         super.viewDidLoad()
-        let service = Service
+        let service = MovieService(baseUrl: "https://api.themoviedb.org/3/movie/")
+        service.getMovie(endPoint: "popular?api_key=0354d19696d91e6a292fbd12ae3360df")
+        
         let layout=UICollectionViewFlowLayout()
         layout.itemSize=CGSize(width:120, height: 120)
         collectionView.collectionViewLayout  = layout

@@ -8,15 +8,28 @@
 import Foundation
 import Alamofire
 
-class MovieService{
+final class MovieService{
+    
+    // static let shared = MovieService() -> singleton object !!  araştır.
+    // movieManager.shared.getMovie şeklinde yazılır.get movieye erişmek istendiğinde
+    
     fileprivate var baseUrl=""
+    
     init(baseUrl: String){
-        self.baseUrl=baseUrl
+        self.baseUrl = baseUrl
     }
+    
     func getMovie(endPoint:String){
         AF.request(self.baseUrl + endPoint, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil, interceptor: nil, requestModifier: nil).response { (responseData) in
             print("we got the response")
-            guard let data = responseData.data else{return}
+            guard let data = responseData.data else { return }
+            do {
+                let Movies = try JSONDecoder().decode(Movie.self, from: data)
+                print("movies==\(Movies)")
+            } catch { // enum eklenmediği için hata veriyor olbilir
+                print("error==\(error)")
+            }
+        }
     }
-}
+    
 }

@@ -11,6 +11,8 @@ class MyCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var imageView: UIImageView!
     
+    @IBOutlet weak var movieTitle: UILabel!
+    
     static let identifier = "MyCollectionViewCell"
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -8,9 +8,9 @@
 import Foundation
 
 
-class movieModel {
-    let id: Int
-    let title: String
+struct MovieModel : Codable {
+   let id: Int
+   let title: String
     let posterPath: String?
     let overview: String
     let runTime: Int?
@@ -27,3 +27,13 @@ class movieModel {
 
 
 
+struct Movie : Codable {
+    let page: Int
+    let results: [MovieResult]
+}
+
+struct MovieResult : Codable {
+    let id: Int
+    let title: String?
+    let overview: String?
+}

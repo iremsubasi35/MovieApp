@@ -17,20 +17,31 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sm1-1N-Wiz">
-                        <rect key="frame" x="0.0" y="0.0" width="131" height="188"/>
+                        <rect key="frame" x="0.0" y="0.0" width="131" height="173"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZc-yL-WLD">
+                        <rect key="frame" x="0.0" y="167.5" width="131" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="sm1-1N-Wiz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="5Ln-qa-RJS"/>
                 <constraint firstAttribute="trailing" secondItem="sm1-1N-Wiz" secondAttribute="trailing" id="7Ad-NQ-7HG"/>
-                <constraint firstAttribute="bottom" secondItem="sm1-1N-Wiz" secondAttribute="bottom" id="fNh-N7-OY6"/>
+                <constraint firstItem="GZc-yL-WLD" firstAttribute="top" secondItem="sm1-1N-Wiz" secondAttribute="bottom" constant="-5.5" id="S3w-yz-97E"/>
+                <constraint firstItem="GZc-yL-WLD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Vf5-by-yqt"/>
+                <constraint firstAttribute="bottom" secondItem="sm1-1N-Wiz" secondAttribute="bottom" constant="15" id="X1k-0o-dlM"/>
+                <constraint firstAttribute="bottom" secondItem="GZc-yL-WLD" secondAttribute="bottom" id="fdO-0p-Oph"/>
+                <constraint firstAttribute="trailing" secondItem="GZc-yL-WLD" secondAttribute="trailing" id="gtM-ek-Ju6"/>
                 <constraint firstItem="sm1-1N-Wiz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="pSg-3Q-qOC"/>
             </constraints>
             <size key="customSize" width="131" height="188"/>
             <connections>
                 <outlet property="imageView" destination="sm1-1N-Wiz" id="Tfx-3n-7WS"/>
+                <outlet property="movieTitle" destination="GZc-yL-WLD" id="w9Z-4m-6Xl"/>
             </connections>
             <point key="canvasLocation" x="109.42028985507247" y="50.892857142857139"/>
         </collectionViewCell>
