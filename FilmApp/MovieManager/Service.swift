@@ -25,8 +25,8 @@ final class MovieService{
             guard let data = responseData.data else { return }
             do {
                 let Movies = try JSONDecoder().decode(Movie.self, from: data)
-                print("movies==\(Movies)")
-            } catch { // enum eklenmediği için hata veriyor olbilir
+                return Movies // return movie , dışına koymayı unutma
+            } catch { 
                 print("error==\(error)")
             }
         }

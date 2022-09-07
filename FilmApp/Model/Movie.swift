@@ -9,8 +9,8 @@ import Foundation
 
 
 struct MovieModel : Codable {
-   let id: Int
-   let title: String
+    let id: Int
+    let title: String
     let posterPath: String?
     let overview: String
     let runTime: Int?
@@ -36,4 +36,5 @@ struct MovieResult : Codable {
     let id: Int
     let title: String?
     let overview: String?
+    let posterPath: String?
 }

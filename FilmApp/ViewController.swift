@@ -26,8 +26,8 @@ class ViewController: UIViewController {
         
         self.navigationItem.title = "Movies"
         
-        collectionView.delegate=self
-        collectionView.dataSource=self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
     }
 }
@@ -45,7 +45,11 @@ extension ViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCell.identifier, for: indexPath) as! MyCollectionViewCell
         
-        cell.configure(with: UIImage(named: "image")!)
+        cell.setupUI(with: )
+        model[indexPath.row]
+       // cell.configure(with: UIImage(named: "image")!)  // asetten çekiyor silinecek
+        // apı dan çekilen bilgileri bu modele uyarlamak. indexpath.row
+        
         return cell
     }
 }

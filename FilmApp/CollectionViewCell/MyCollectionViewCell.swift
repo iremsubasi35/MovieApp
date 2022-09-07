@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Kingfisher
 
-class MyCollectionViewCell: UICollectionViewCell {
+ final class MyCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var imageView: UIImageView!
     
@@ -18,11 +19,18 @@ class MyCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    public func configure(with image: UIImage){
-        imageView.image = image
+    public func setupUI(with model: MyCollectionViewCellModel){ // kingfisher burda çekilecek
+        // imageView.image = model.imageUrl
+        let url = URL(string: model.imageUrl ?? "") //DOLDUR
+        imageView.kf.setImage(with: url)
+        movieTitle.text = model.title
     }
 
     static func nib() -> UINib{
         return UINib(nibName:"MyCollectionViewCell", bundle: nil)
     }
-}
+    
+         }
+     
+    
+
