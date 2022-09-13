@@ -45,8 +45,8 @@ extension ViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCell.identifier, for: indexPath) as! MyCollectionViewCell
         
-        cell.setupUI(with: )
-        model[indexPath.row]
+       // cell.setupUI(with: )
+        //model[indexPath.row]
        // cell.configure(with: UIImage(named: "image")!)  // asetten çekiyor silinecek
         // apı dan çekilen bilgileri bu modele uyarlamak. indexpath.row
         

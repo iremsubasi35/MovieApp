@@ -20,7 +20,7 @@ import Kingfisher
         // Initialization code
     }
     public func setupUI(with model: MyCollectionViewCellModel){ // kingfisher burda çekilecek
-        // imageView.image = model.imageUrl
+       // imageView.image = model.imageUrl
         let url = URL(string: model.imageUrl ?? "") //DOLDUR
         imageView.kf.setImage(with: url)
         movieTitle.text = model.title
