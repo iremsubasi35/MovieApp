@@ -20,27 +20,27 @@ final class MovieService{
         self.baseUrl = baseUrl
     }
     
-    func getMovie(endPoint:String,completion:([Movie],Error?)->Void){
-        print("1")
+    func getMovie(endPoint:String,completion:@escaping (Movie?,Error?)->Void){
+        
         AF.request(self.baseUrl + endPoint, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil,
                    interceptor: nil, requestModifier: nil).response { (responseData) in
-            print("2")
+            
             print("we got the response")
             guard let data = responseData.data else {
-                completion([],nil)
+                completion(nil,nil)
                 return
             }
             
             do {
-                let Movies = try JSONDecoder().decode([Movie].self, from: data)       // 1 3  2
+                let Movies = try JSONDecoder().decode(Movie.self, from: data)
                 
                 completion(Movies,nil)
             } catch { 
                 print("error==\(error)")
-                completion([],error)
+                completion(nil,error)
             }
         }
-        print("3")
+       
     }
     
 }

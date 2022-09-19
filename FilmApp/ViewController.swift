@@ -6,21 +6,30 @@
 //
 
 import UIKit
-
+// https://image.tmdb.org/t/p/w500/62HCnUTziyWcpDaBO2i1DX17ljH.jpg
 
 class ViewController: UIViewController {
-
+    private var movies : [MovieResult]=[] //var tanımlaması
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         
-        collectionView.register(MyCollectionViewCell.nib(), forCellWithReuseIdentifier: MyCollectionViewCell.identifier)
+        collectionView.register(MovieListCell.nib(), forCellWithReuseIdentifier: MovieListCell.identifier)
         
         super.viewDidLoad()
         let service = MovieService(baseUrl: "https://api.themoviedb.org/3/movie/")
-        service.getMovie(endPoint: "popular?api_key=0354d19696d91e6a292fbd12ae3360df")
+        service.getMovie(endPoint: "popular?api_key=0354d19696d91e6a292fbd12ae3360df") { movies, error in
+            self.movies = movies?.results ?? []
+            self.collectionView.reloadData()
+            print(movies)
+            print(error)
+        }
+        //service.getMovie(endPoint: "popular?api_key=0354d19696d91e6a292fbd12ae3360df")
+        //https://api.themoviedb.org/3/movie/550?api_key=0354d19696d91e6a292fbd12ae3360df //detay sayfasında bunu kullan id 550 yazan yer
+        //https://api.themoviedb.org/3/movie/popular?api_key=0354d19696d91e6a292fbd12ae3360df
+        let layout=UICollectionViewFlowLayout()// collectionview de layout nasıl değiştirilir. updateing collectionview layout itemsize dinamik hesaplamak lazım
+        // posterlerin arasınmdaki nboşluğu layout üzerinden değiştirmeey bak
         
-        let layout=UICollectionViewFlowLayout()
         layout.itemSize=CGSize(width:120, height: 120)
         collectionView.collectionViewLayout  = layout
         
@@ -40,10 +49,11 @@ extension ViewController: UICollectionViewDelegate{
 }
 extension ViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return movies.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCell.identifier, for: indexPath) as! MyCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieListCell.identifier, for: indexPath) as! MovieListCell
+        cell.setupUI(with: movies[indexPath.row])
         
        // cell.setupUI(with: )
         //model[indexPath.row]

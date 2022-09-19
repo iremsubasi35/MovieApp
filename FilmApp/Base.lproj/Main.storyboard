@@ -78,13 +78,14 @@
                             <constraint firstItem="qmk-8H-yAt" firstAttribute="trailing" secondItem="d13-Fo-n5C" secondAttribute="trailing" id="UZe-3s-47m"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="CN2-2y-yng"/>
                     <connections>
                         <outlet property="tableViewMovieDetail" destination="d13-Fo-n5C" id="Mdd-FH-zYV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ocW-Ph-vH9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1773" y="82"/>
+            <point key="canvasLocation" x="1901" y="69"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="d73-wp-ZvO">

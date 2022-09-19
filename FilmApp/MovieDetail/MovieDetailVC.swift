@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+
 class MovieDetailImageCell: UITableViewCell{
     @IBOutlet weak var imView: UIView!
 }
@@ -20,41 +21,12 @@ class MovieDetailDescriptionCell : UITableViewCell{
     @IBOutlet weak var lblDescription: UITextView!
 }
  
-class movieDetailVC : UIViewController, UITableViewDataSource, UITableViewDelegate{
+class MovieDetailVC : UIViewController, UITableViewDataSource, UITableViewDelegate{
+    
     @IBOutlet weak var tableViewMovieDetail: UITableView!
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "MovieDetailImageCell", for: indexPath) as! MovieDetailImageCell
-                let imagePath = MyCollectionViewCell.imagePath()
-                imageView.kf.setImage(with: url)
-            }
-        else if indexPath.row == 1 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "MovieDetailTitleCell", for : indexPath) as!
-                    MovieDetailTitleCell
-            }
-        else if indexPath.row == 2 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "MovieDetailDescriptionCell", for : indexPath) as! MovieDetailDescriptionCell
-        }
-        
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-                if indexPath.row == 0 {
-                   return 209
-                } else if indexPath.row == 1 {
-                    return 50
-                } else if indexPath.row == 2 {
-                    return UITableView.automaticDimension
-               }
-                return 0
-
-    
-    
-    var MovieId: String = ""
-    
-    //private var Movie : Movie  = Movie(id: "", title: "", description: "")
+    var movieId: String = ""
+    //private var Movie : Movie  = MovieResult(id: "", title: "", description: "")
     
     override func viewDidLoad() {
             super.viewDidLoad()
@@ -62,7 +34,36 @@ class movieDetailVC : UIViewController, UITableViewDataSource, UITableViewDelega
         tableViewMovieDetail.delegate = self
         tableViewMovieDetail.dataSource = self
 }
+
+func tableView( _ tableView: UITableView, cellForRowAt indexpath : IndexPath) ->UITableViewCell{
+    if indexpath.row == 0 {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieDetailImageCell", for : indexpath) as!  MovieDetailImageCell
+        
+        return cell
+    } else if indexpath.row == 1 {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieDetailTitleCell", for : indexpath) as! MovieDetailTitleCell
+        return cell
+    } else if indexpath.row == 2 {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieDetailDesctiprion", for : indexpath) as! MovieDetailDescriptionCell
+       return cell
+    }
+    return UITableViewCell()
 }
+
+func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        3
+    }
+
+func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+           return 209
+        } else if indexPath.row == 1 {
+            return 50
+        } else if indexPath.row == 2 {
+            return UITableView.automaticDimension
+       }
+    return 0
+        }
 }
-}
+
 

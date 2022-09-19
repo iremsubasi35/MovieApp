@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
- final class MyCollectionViewCell: UICollectionViewCell {
+ final class MovieListCell: UICollectionViewCell {
 
     @IBOutlet var imageView: UIImageView!
     
@@ -19,12 +19,16 @@ import Kingfisher
         super.awakeFromNib()
         // Initialization code
     }
-    public func setupUI(with model: MyCollectionViewCellModel){ // kingfisher burda çekilecek
+    public func setupUI(with model: MovieResult){ // kingfisher burda çekilecek
        // imageView.image = model.imageUrl
-        let url = URL(string: model.imageUrl ?? "") //DOLDUR
+        let imageURL = "https://image.tmdb.org/t/p/w500" + (model.posterPath ?? "")
+        let url = URL(string: imageURL ) //DOLDUR
         imageView.kf.setImage(with: url)
         movieTitle.text = model.title
+        imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
     }
+     //https://image.tmdb.org/t/p/w500/62HCnUTziyWcpDaBO2i1DX17ljH.jpg
 
     static func nib() -> UINib{
         return UINib(nibName:"MyCollectionViewCell", bundle: nil)
