@@ -12,7 +12,7 @@ import Alamofire
 final class MovieService{
     
     // static let shared = MovieService() -> singleton object !!  araştır.
-    // movieManager.shared.getMovie şeklinde yazılır.get movieye erişmek istendiğinde
+    // movieManager.shared.getMovie
     
     fileprivate var baseUrl=""
     

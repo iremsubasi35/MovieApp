@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 
 class MovieDetailImageCell: UITableViewCell{
@@ -15,21 +16,17 @@ class MovieDetailImageCell: UITableViewCell{
 
 class MovieDetailTitleCell : UITableViewCell{
     @IBOutlet weak var lblTitle: UILabel!
-    
 }
 
 class MovieDetailDescriptionCell : UITableViewCell{
     @IBOutlet weak var txtDescription: UITextView!
-    
-    
 }
  
 class MovieDetailVC : UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var tableViewMovieDetail: UITableView!
-    
-    var movieId: String = ""
-    //private var Movie : Movie  = MovieResult(id: "", title: "", description: "")
+     var movie : MovieResult?
+     var movieId: String = ""
     
     override func viewDidLoad() {
             super.viewDidLoad()
@@ -52,14 +49,20 @@ class MovieDetailVC : UIViewController, UITableViewDataSource, UITableViewDelega
 func tableView( _ tableView: UITableView, cellForRowAt indexpath : IndexPath) ->UITableViewCell{
     if indexpath.row == 0 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieDetailImageCell", for : indexpath) as!  MovieDetailImageCell
+        let imagePath = "https://image.tmdb.org/t/p/w500" + (movie?.posterPath ?? "")
+        let url = URL(string: imagePath)
+        cell.imView.kf.setImage(with: url)
+      //  cell.imView.kf.setImage( with: imagePath, placeholder: UIImage(named: "empty"))
         return cell
         
     } else if indexpath.row == 1 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieDetailTitleCell", for : indexpath) as! MovieDetailTitleCell
+        cell.lblTitle.text = movie?.title
         return cell
         
     } else if indexpath.row == 2 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieDetailDescriptionCell", for : indexpath) as! MovieDetailDescriptionCell
+        cell.txtDescription.text = movie?.overview
        return cell
     }
     return UITableViewCell()

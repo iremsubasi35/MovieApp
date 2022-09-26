@@ -19,7 +19,7 @@ import Kingfisher
         super.awakeFromNib()
         // Initialization code
     }
-    public func setupUI(with model: MovieListCellModel){ // kingfisher burda çekilecek
+    public func setupUI(with model: MovieListCellModel){
        // imageView.image = model.imageUrl
         let imageURL = "https://image.tmdb.org/t/p/w500" + (model.imageURL)
         let url = URL(string: imageURL ) //DOLDUR

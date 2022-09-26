@@ -29,6 +29,9 @@
                     <constraint firstAttribute="trailing" secondItem="5pV-NO-yYZ" secondAttribute="trailing" id="XIR-tp-xfS"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lblTitle" destination="5pV-NO-yYZ" id="6cR-Al-LeO"/>
+            </connections>
             <point key="canvasLocation" x="48" y="100"/>
         </tableViewCell>
     </objects>
