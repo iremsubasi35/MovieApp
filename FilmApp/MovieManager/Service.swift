@@ -42,5 +42,26 @@ final class MovieService{
         }
        
     }
-    
+    func getMovieDetails(endPoint:String,completion:@escaping (MovieDetailModel?,Error?)->Void){
+        
+        AF.request(self.baseUrl + endPoint, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil,
+                   interceptor: nil, requestModifier: nil).response { (responseData) in
+            
+            print("we got the response")
+            guard let data = responseData.data else {
+                completion(nil,nil)
+                return
+            }
+            
+            do {
+                let Movies = try JSONDecoder().decode(MovieDetailModel.self, from: data)
+                
+                completion(Movies,nil)
+            } catch {
+                print("error==\(error)")
+                completion(nil,error)
+            }
+        }
+       
+    }
 }

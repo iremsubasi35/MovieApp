@@ -23,7 +23,14 @@ class ViewController: UIViewController {
             self.collectionView.reloadData()
             print(movies)
             print(error)
+            
         }
+     //   let service = MovieService(baseUrl: "https://api.themoviedb.org/3/movie/")
+//        service.getMovieDetails(endPoint: "550?api_key=0354d19696d91e6a292fbd12ae3360df") {       movies, error in
+//            print(movies)
+//            print(error)
+//
+//        }
         //service.getMovie(endPoint: "popular?api_key=0354d19696d91e6a292fbd12ae3360df")
         //https://api.themoviedb.org/3/movie/550?api_key=0354d19696d91e6a292fbd12ae3360df //detay sayfasında bunu kullan id 550 yazan yer
         //https://api.themoviedb.org/3/movie/popular?api_key=0354d19696d91e6a292fbd12ae3360df
@@ -45,6 +52,11 @@ extension ViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         print("you tapped me")
+      //  let currentMovie = filteredRecipes[indexPath.row]
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "MovieDetailVC") as! MovieDetailVC
+            //    viewController.recipeId = currentRecipe.id
+                self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 extension ViewController: UICollectionViewDataSource{
@@ -53,7 +65,8 @@ extension ViewController: UICollectionViewDataSource{
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieListCell.identifier, for: indexPath) as! MovieListCell
-        cell.setupUI(with: movies[indexPath.row])
+        let cellModel = MovieListCellModel(imageURL: movies[indexPath.row].posterPath ?? "", title: movies[indexPath.row].title ?? "")
+        cell.setupUI(with: cellModel)
         
        // cell.setupUI(with: )
         //model[indexPath.row]

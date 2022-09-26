@@ -10,15 +10,18 @@ import UIKit
 
 
 class MovieDetailImageCell: UITableViewCell{
-    @IBOutlet weak var imView: UIView!
+    @IBOutlet weak var imView: UIImageView!
 }
 
 class MovieDetailTitleCell : UITableViewCell{
     @IBOutlet weak var lblTitle: UILabel!
+    
 }
 
 class MovieDetailDescriptionCell : UITableViewCell{
-    @IBOutlet weak var lblDescription: UITextView!
+    @IBOutlet weak var txtDescription: UITextView!
+    
+    
 }
  
 class MovieDetailVC : UIViewController, UITableViewDataSource, UITableViewDelegate{
@@ -31,20 +34,32 @@ class MovieDetailVC : UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
             super.viewDidLoad()
         
+        tableViewMovieDetail.register(UINib(nibName: "MovieDetailImageCell", bundle: nil), forCellReuseIdentifier: "MovieDetailImageCell")
+        tableViewMovieDetail.register(UINib(nibName: "MovieDetailTitleCell", bundle: nil), forCellReuseIdentifier: "MovieDetailTitleCell")
+        tableViewMovieDetail.register(UINib(nibName: "MovieDetailDescriptionCell", bundle: nil), forCellReuseIdentifier: "MovieDetailDescriptionCell")
+        
         tableViewMovieDetail.delegate = self
         tableViewMovieDetail.dataSource = self
+        
+        let service = MovieService(baseUrl: "https://api.themoviedb.org/3/movie/")
+          service.getMovieDetails(endPoint: "550?api_key=0354d19696d91e6a292fbd12ae3360df") {       movies, error in
+              print(movies)
+              print(error)
+              
+          }
 }
 
 func tableView( _ tableView: UITableView, cellForRowAt indexpath : IndexPath) ->UITableViewCell{
     if indexpath.row == 0 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieDetailImageCell", for : indexpath) as!  MovieDetailImageCell
-        
         return cell
+        
     } else if indexpath.row == 1 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieDetailTitleCell", for : indexpath) as! MovieDetailTitleCell
         return cell
+        
     } else if indexpath.row == 2 {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieDetailDesctiprion", for : indexpath) as! MovieDetailDescriptionCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieDetailDescriptionCell", for : indexpath) as! MovieDetailDescriptionCell
        return cell
     }
     return UITableViewCell()

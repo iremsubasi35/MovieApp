@@ -39,3 +39,14 @@ struct MovieResult : Codable {
         case posterPath = "poster_path"
     }
 }
+ 
+struct MovieDetailModel : Codable{
+    let overview: String?
+    let posterPath : String?
+    let orginalTitle : String?
+    enum CodingKeys : String, CodingKey{
+        case posterPath = "poster_path"
+        case orginalTitle = "original_title"
+        case overview = "overview"
+    }
+}
