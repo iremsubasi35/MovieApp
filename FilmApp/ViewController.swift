@@ -23,7 +23,6 @@ class ViewController: UIViewController {
             self.collectionView.reloadData()
             print(movies)
             print(error)
-            
         }
         
         //https://api.themoviedb.org/3/movie/550?api_key=0354d19696d91e6a292fbd12ae3360df

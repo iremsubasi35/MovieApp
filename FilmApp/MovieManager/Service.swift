@@ -10,9 +10,7 @@ import Foundation
 import Alamofire
 
 final class MovieService{
-    
-    // static let shared = MovieService() -> singleton object !!  araştır.
-    // movieManager.shared.getMovie
+
     
     fileprivate var baseUrl=""
     
