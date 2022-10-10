@@ -78,7 +78,8 @@ func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) ->
         } else if indexPath.row == 1 {
             return 50
         } else if indexPath.row == 2 {
-            return UITableView.automaticDimension
+            return 500
+            //UITableView.automaticDimension
        }
     return 0
         }
